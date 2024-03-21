@@ -40,6 +40,53 @@ function Play(character: Character) {
 
 //----------------------------------------------------------------
 
+// Ejemplo simple sobre el never:
+
+function fn(x: number | string) {
+  if (typeof x === "string") {
+    console.log("Is a string or text now");
+    x.toUpperCase();
+  } else if (typeof x === "number") {
+    console.log("Is a number Now");
+    x + 2;
+  } else {
+    x;
+  }
+}
+
+//----------------------------------------------------------------
+
+// Clase sobre avengers
+
+//Para evittar la mutacion del name de la clase (spidey a hulk) ponemos de solo lectura el name con la propiedad readonly
+class Avenger {
+  readonly name: string;
+  powerScore: number;
+  wonBattles: number = 0;
+
+  constructor(name: string, powerScore: number) {
+    this.name = name;
+    this.powerScore = powerScore;
+  }
+
+  get fullName() {
+    return `${this.name}, of power ${this.powerScore}`;
+  }
+
+  set power(newPower: number) {
+    if (newPower <= 100) {
+      this.powerScore = newPower;
+    } else {
+      throw new Error("Power score be more than 100");
+    }
+  }
+}
+
+const avengers = new Avenger("Spideey", 80);
+avengers.name = "Hukl"; // No tiene sentido por que mutamos la clase de Spidey A Hulk
+
+// avengers.power = 90
+
 //Manera dos de hacer el ejemplo de arriba:
 
 interface Marcus {
@@ -64,6 +111,8 @@ function PlayAgain(character: CharacterTwo) {
     character.shoot();
   }
 }
+
+//----------------------------------------------------------------
 
 //Ejemplo hecho por mi
 
@@ -93,6 +142,8 @@ function PLayTryAgain(character: CharacterThree) {
   }
 }
 
+//----------------------------------------------------------------
+
 // Otro ejemplo para asegurarme de entender
 
 interface Ghost {
@@ -118,6 +169,8 @@ function PlayFour(character: CharacterFour) {
     return character.destroyGods();
   }
 }
+
+//----------------------------------------------------------------
 
 // Otro ejemplo para asegurarme de entender penultima vez
 
@@ -145,6 +198,8 @@ function PlayCat(cat: Cat) {
   }
 }
 
+//----------------------------------------------------------------
+
 // Otro ejemplo para asegurarme de entender ultima vez
 
 interface Cr7 {
@@ -170,3 +225,5 @@ function PlaySocccer(player: SoccerPlayer) {
     return player.bargain();
   }
 }
+
+//----------------------------------------------------------------
