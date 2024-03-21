@@ -1,3 +1,5 @@
+import { IAvenger } from "./types";
+
 // Narrowing Typescript
 
 // Podemos entender el narrowing como un embudo que va guiando el camino de que queremos manejar en esta funcion por ejemplo, que tipo de datos quiero validar y quiatr los demas
@@ -59,11 +61,8 @@ function fn(x: number | string) {
 // Clase sobre avengers
 
 //Para evittar la mutacion del name de la clase (spidey a hulk) ponemos de solo lectura el name con la propiedad readonly
-class Avenger {
-  readonly name: string;
-  powerScore: number;
-  wonBattles: number = 0;
 
+class Avengers implements IAvenger {
   constructor(name: string, powerScore: number) {
     this.name = name;
     this.powerScore = powerScore;
@@ -83,9 +82,11 @@ class Avenger {
 }
 
 const avengers = new Avenger("Spideey", 80);
-avengers.name = "Hukl"; // No tiene sentido por que mutamos la clase de Spidey A Hulk
+// avengers.name = "Hukl"; // No tiene sentido por que mutamos la clase de Spidey A Hulk
 
 // avengers.power = 90
+
+// ----------------------------------------------------------------
 
 //Manera dos de hacer el ejemplo de arriba:
 
